@@ -40,9 +40,10 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
     'api',
-    'corsheaders'
+    'corsheaders',
+    'channels'
 ]
-
+ASGI_APPLICATION = 'vision_backend.asgi.application'
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (

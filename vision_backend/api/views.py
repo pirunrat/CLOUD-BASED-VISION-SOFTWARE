@@ -65,13 +65,3 @@ def receive_frame(request):
 
 
 
-# @api_view(['GET'])
-# def video_frame(request):
-#     """Returns a single JPEG frame from a file or camera"""
-#     # Simulate a camera/image read
-#     frame = cv2.imread("path/to/sample.jpg")  # or use cv2.VideoCapture() for live feed
-#     if frame is None:
-#         return Response({"error": "Frame not found"}, status=404)
-
-#     _, buffer = cv2.imencode('.jpg', frame)
-#     return Response(buffer.tobytes(), content_type='image/jpeg')
