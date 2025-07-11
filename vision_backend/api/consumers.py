@@ -37,23 +37,21 @@ class FrameConsumer(AsyncWebsocketConsumer):
             img_np = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
             #print("✅ Received frame:", img_np.shape)
 
-            # # Step 2: Convert to grayscale
-            # gray = cv2.cvtColor(img_np, cv2.COLOR_BGR2GRAY)
+            # Step 2: Convert to grayscale
+            gray = cv2.cvtColor(img_np, cv2.COLOR_BGR2GRAY)
 
-            # sobel_bgr = gray
+            # Step 3: Apply Sobel Edge Detection
+            sobel_x = cv2.Sobel(gray, cv2.CV_64F, 1, 0, ksize=3)
+            sobel_y = cv2.Sobel(gray, cv2.CV_64F, 0, 1, ksize=3)
+            sobel = cv2.magnitude(sobel_x, sobel_y)
+            sobel = np.uint8(np.clip(sobel, 0, 255))
 
-            # # Step 3: Apply Sobel Edge Detection
-            # sobel_x = cv2.Sobel(gray, cv2.CV_64F, 1, 0, ksize=3)
-            # sobel_y = cv2.Sobel(gray, cv2.CV_64F, 0, 1, ksize=3)
-            # sobel = cv2.magnitude(sobel_x, sobel_y)
-            # sobel = np.uint8(np.clip(sobel, 0, 255))
-
-            # # Step 4: Convert back to BGR (for viewing in color channels)
-            # sobel_bgr = cv2.cvtColor(sobel, cv2.COLOR_GRAY2BGR)
+            # Step 4: Convert back to BGR (for viewing in color channels)
+            sobel_bgr = cv2.cvtColor(sobel, cv2.COLOR_GRAY2BGR)
 
             # Step 5: Encode processed image as PNG
             start_time = time.time()
-            success, buffer = cv2.imencode('.jpg', img_np, [cv2.IMWRITE_JPEG_QUALITY, 70])
+            success, buffer = cv2.imencode('.jpg', sobel_bgr, [cv2.IMWRITE_JPEG_QUALITY, 70])
             if success:
                 await self.send(bytes_data=buffer.tobytes())
                 print(f"✅ Sent frame in {time.time() - start_time:.3f}s")

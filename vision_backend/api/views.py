@@ -7,6 +7,8 @@ from django.http import StreamingHttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from rest_framework import status
+from django.http import HttpResponse
+import cv2
 import numpy as np
 
 import cv2
@@ -49,19 +51,36 @@ def video_stream(request):
     return StreamingHttpResponse(generate_frames(), content_type='multipart/x-mixed-replace; boundary=frame')
 
 
-@api_view(['POST'])  # ✅ Correct method
+
+
+face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
+
+@api_view(['POST'])
 def receive_frame(request):
     if 'frame' in request.FILES:
         frame_file = request.FILES['frame']
         nparr = np.frombuffer(frame_file.read(), np.uint8)
         img_np = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
 
-        # ✅ Do something with the received image
-        print("Received frame of shape:", img_np.shape)
+        # Step 1: Convert to grayscale
+        gray = cv2.cvtColor(img_np, cv2.COLOR_BGR2GRAY)
 
-        return Response({'status': 'success'}, status=status.HTTP_200_OK)
-    
-    return Response({'status': 'error', 'message': 'No frame provided'}, status=status.HTTP_400_BAD_REQUEST)
+        # Step 2: Detect faces
+        faces = face_cascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5)
+
+        # Step 3: Draw rectangles around detected faces
+        for (x, y, w, h) in faces:
+            cv2.rectangle(img_np, (x, y), (x + w, y + h), (0, 255, 0), 2)
+
+        # Step 4: Encode to JPEG and return
+        success, encoded_image = cv2.imencode('.jpg', img_np)
+        if success:
+            return HttpResponse(encoded_image.tobytes(), content_type='image/jpeg')
+        else:
+            return HttpResponse("Failed to encode image", status=500)
+
+    return HttpResponse("No frame provided", status=400)
+
 
 
 
