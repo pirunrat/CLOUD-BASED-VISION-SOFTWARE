@@ -38,9 +38,9 @@ class MainUI(QWidget):
       
 
     def _init_topbar_items(self):
-        self.topbar_item1 = TopbarItem('Item1')
-        self.topbar_item2 = TopbarItem('Item2')
-        self.topbar_item3 = TopbarItem('Item3')
+        self.topbar_item1 = TopbarItem('DEEP LEARNING',image=r"C:\Users\user\Desktop\CV\CLOUD-BASED-VISION-SOFTWARE\frontend\assets\deep-learning.png")
+        self.topbar_item2 = TopbarItem('MATCHING',image=r"C:\Users\user\Desktop\CV\CLOUD-BASED-VISION-SOFTWARE\frontend\assets\test-match.png")
+        self.topbar_item3 = TopbarItem('MEASUREMENT',image=r"C:\Users\user\Desktop\CV\CLOUD-BASED-VISION-SOFTWARE\frontend\assets\ruler.png")
 
     def _init_middle_panel(self):
         self.middle_panel = MiddlePanel()

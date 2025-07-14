@@ -1,122 +1,27 @@
-# TOPBAR_STYLE = """
-# QLabel#topbar {
-#     background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,
-#                                       stop:0 #3a3a3a, stop:1 #707070);
-#     color: white;
-#     padding: 10px;
-#     font-size: 16pt;
-# }
-# """
-
-# BOTTOMBAR_STYLE = """
-# QLabel#bottombar {
-#     background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0,
-#                                       stop:0 #3a3a3a, stop:1 #707070);
-#     color: white;
-#     padding: 10px;
-#     font-size: 14pt;
-# }
-# """
-
-# LEFT_SIDEBAR_STYLE = """
-# QWidget#leftSidebar {
-#     background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0,
-#                                       stop:0 #2c2c2c, stop:1 #555555);
-#     color: white;
-#     padding: 10px;
-# }
-# """
-
-# RIGHT_SIDEBAR_STYLE = """
-# QWidget#rightSidebar {
-#     background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:0,
-#                                       stop:0 #2c2c2c, stop:1 #555555);
-#     color: white;
-#     padding: 20px;
-#     border-left: 1px solid #888;
-#     font-family: 'Segoe UI', sans-serif;
-# }
-# QLabel {
-#     font-size: 10pt;
-#     color: #ddd;
-# }
-# """
 
 
-# MIDDLE_STYLE = """
-# QLabel#centerPanel {
-#     background-color: black;
-#     color: #333;
-#     font-size: 14pt;
-#     border-left: 1px solid #ccc;
-#     border-right: 1px solid #ccc;
-# }
-# """
-
-# BUTTON_STYLE = """
-# QPushButton {
-#     background-color: #444;
-#     color: white;
-#     border: 1px solid #666;
-#     border-radius: 6px;
-#     padding: 6px;
-#     font-size: 10pt;
-# }
-# QPushButton:hover {
-#     background-color: #555;
-# }
-# QPushButton:pressed {
-#     background-color: #333;
-# }
-# """
 
 
-# # Right Sidebar Metric Box
-# METRIC_TILE_STYLE = """
-# QWidget {
-#     background-color: rgba(255, 255, 255, 0.05);
-#     border-radius: 10px;
-#     padding: 10px;
-#     margin-bottom: 6px;
-# }
-# QLabel {
-#     color: #ddd;
-#     font-family: 'Segoe UI', sans-serif;
-# }
-# """
+TOPBAR_ITEM_STYLE = """
+QWidget {
+    background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0,
+                stop:0 #1a1a1a, stop:1 #3a3a3a);
+    color: white;
+    border: 1px solid black;
+    border-radius: 0px;
+}
+QWidget:hover {
+    background-color: #222;
+}
+"""
 
-# # Better Left Sidebar Section Headers
-# LEFT_SECTION_HEADER_STYLE = """
-# font-weight: bold;
-# font-size: 12pt;
-# color: white;
-# margin-bottom: 6px;
-# """
-
-# # Left Sidebar Buttons
-# BUTTON_STYLE = """
-# QPushButton {
-#     background-color: #3c3c3c;
-#     color: white;
-#     border: 1px solid #666;
-#     border-radius: 8px;
-#     padding: 8px;
-#     font-size: 10pt;
-# }
-# QPushButton:hover {
-#     background-color: #505050;
-# }
-# QPushButton:pressed {
-#     background-color: #2a2a2a;
-# }
-# """
 
 
 
 TOPBAR_STYLE = """
 QLabel#topbar {
-    background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,
-                                      stop:0 #3a3a3a, stop:1 #707070);
+    background-color: qqlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0,
+                stop:0 #1a1a1a, stop:1 #3a3a3a);
     color: white;
     padding: 10px;
     font-size: 16pt;
@@ -125,8 +30,8 @@ QLabel#topbar {
 
 BOTTOMBAR_STYLE = """
 QWidget#bottombar {
-    background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0,
-                                      stop:0 #3a3a3a, stop:1 #707070);
+    background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0,
+                stop:0 #1a1a1a, stop:1 #3a3a3a);
     padding: 5px;
 }
 QLabel {
@@ -135,42 +40,15 @@ QLabel {
 }
 """
 
-LEFT_SIDEBAR_STYLE = """
-QFrame#leftSidebar {
-    background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0,
-                                      stop:0 #2c2c2c, stop:1 #555555);
-    padding: 10px;
-}
 
-QFrame#leftSidebar QLabel {
-    color: white;
-    background-color: transparent;
-    font-weight: bold;
-}
-
-QFrame#leftSidebar QPushButton {
-    background-color: #444;
-    color: white;
-    border: 1px solid #666;
-    border-radius: 6px;
-    padding: 6px;
-    font-size: 10pt;
-}
-QFrame#leftSidebar QPushButton:hover {
-    background-color: #555;
-}
-QFrame#leftSidebar QPushButton:pressed {
-    background-color: #2a2a2a;
-}
-"""
 
 
 
 
 RIGHT_SIDEBAR_STYLE = """
 QFrame#rightSidebar {
-    background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:0,
-                                      stop:0 #2c2c2c, stop:1 #555555);
+    background-color: #1e1e1e;
+
     padding: 20px;
     border-left: 1px solid #444;
 }
@@ -210,12 +88,38 @@ QPushButton:pressed {
 }
 """
 
-LEFT_SECTION_HEADER_STYLE = """
-font-weight: bold;
-font-size: 12pt;
-color: white;
-margin-bottom: 6px;
+CARD_STYLE = """
+QFrame {
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    border: 1px solid #333;
+}
 """
+
+LEFT_SECTION_HEADER_STYLE = """
+QLabel {
+    font-weight: bold;
+    font-size: 11pt;
+    color: white;
+}
+"""
+
+LEFT_SIDEBAR_STYLE = """
+QFrame#leftSidebar {
+    background-color: #1e1e1e;
+}
+QPushButton {
+    background-color: #333;
+    color: white;
+    padding: 6px 12px;
+    border: 1px solid #444;
+    border-radius: 6px;
+}
+QPushButton:hover {
+    background-color: #444;
+}
+"""
+
 
 METRIC_TILE_STYLE = """
 QWidget {
@@ -230,8 +134,8 @@ QLabel {
 
 THUMBNAIL_STYLE = """
 QWidget#bottombar {
-    background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0,
-                                      stop:0 #3a3a3a, stop:1 #707070);
+    background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0,
+                stop:0 #1a1a1a, stop:1 #3a3a3a);
 }
 QLabel {
     color: white;
