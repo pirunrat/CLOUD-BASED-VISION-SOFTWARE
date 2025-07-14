@@ -1,3 +1,18 @@
+COMBOBOX_STYLE = """
+QComboBox {
+    padding: 6px;
+    font-size: 14px;
+    border: 1px solid #888;
+    border-radius: 5px;
+    background-color: #2b2b2b;
+    color: white;
+}
+QComboBox QAbstractItemView {
+    background-color: #2e2e2e;
+    selection-background-color: #555555;
+    color: white;
+}
+"""
 
 
 
@@ -96,13 +111,22 @@ QFrame {
 }
 """
 
+CARD_STYLE = """
+QFrame {
+    background-color: #2e2e2e;
+    border-radius: 10px;
+    border: 1px solid #444;
+}
+"""
+
 LEFT_SECTION_HEADER_STYLE = """
 QLabel {
+    font-size: 16px;
     font-weight: bold;
-    font-size: 11pt;
     color: white;
 }
 """
+
 
 LEFT_SIDEBAR_STYLE = """
 QFrame#leftSidebar {
@@ -133,12 +157,12 @@ QLabel {
 """
 
 THUMBNAIL_STYLE = """
-QWidget#bottombar {
-    background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0,
-                stop:0 #1a1a1a, stop:1 #3a3a3a);
+QWidget {
+    background-color:  #1e1e1e;
+    border: 1px solid black;
 }
 QLabel {
-    color: white;
+    background-color:   #1e1e1e;
     font-size: 10pt;
 }
 """

@@ -23,7 +23,7 @@ class MainUI(QWidget):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Inspection Dashboard")
-        self.setStyleSheet('background-color: white;')
+        #self.setStyleSheet('background-color: white;')
         self.setMinimumSize(1200, 800)
         
        
@@ -31,6 +31,7 @@ class MainUI(QWidget):
         self._init_topbar_items()
         self._init_middle_panel()
         self._init_topbar()
+        self._init_bottombar()
 
         self._connect_topbar_signals()
         self._init_layout()
@@ -53,6 +54,9 @@ class MainUI(QWidget):
             self._on_topbar_click
         )
     
+    def _init_bottombar(self):
+        self.bottombar = BottomBar()
+    
 
     def _connect_topbar_signals(self):
         self.topbar_item1.clicked_signal.connect(lambda: self.middle_panel.update_right_sidebar("Item1"))
@@ -66,7 +70,7 @@ class MainUI(QWidget):
         self.mainLayout.addWidget(self.topbar)
         self.mainLayout.addWidget(self.middle_panel)
         # Optional: Add bottom bar if needed
-        # self.mainLayout.addWidget(self._bottombar())
+        self.mainLayout.addWidget(self.bottombar)
 
     def _on_topbar_click(self, key):
         print(f"[INFO] clicked! from {key}")

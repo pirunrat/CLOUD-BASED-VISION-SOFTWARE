@@ -5,7 +5,7 @@ class RightSidebar2(QFrame):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.setObjectName('rightSidebar')
-        self.setFixedWidth(300)
+        self.setFixedWidth(400)
         self.setStyleSheet(style.RIGHT_SIDEBAR_STYLE)
         self._build_ui()
 
