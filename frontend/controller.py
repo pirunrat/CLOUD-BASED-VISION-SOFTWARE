@@ -25,7 +25,7 @@ class ControllerCamera:
         self.camera._start_camera()
         if self.camera.isCamOpen:
             self.running = True
-            self.timer.start(300)
+            self.timer.start(100)
             print("[INFO] Camera started successfully")
 
     def _stop_camera(self):
@@ -40,21 +40,6 @@ class ControllerCamera:
         if frame is not None:
             # ❌ Don't display raw frame
             threading.Thread(target=self._send_async_http, args=(frame,), daemon=True).start()
-
-    # def _send_async_http(self, frame):
-    #     try:
-    #         _, buffer = cv2.imencode('.jpg', frame, [cv2.IMWRITE_JPEG_QUALITY, 70])
-    #         response = self.session.post(
-    #             "http://localhost:8000/api/receive_frame/",
-    #             files={"frame": ("frame.jpg", buffer.tobytes(), "image/jpeg")},
-    #             timeout=1.5
-    #         )
-    #         if response.status_code == 200:
-    #             img = cv2.imdecode(np.frombuffer(response.content, np.uint8), cv2.IMREAD_COLOR)
-    #             if img is not None:
-    #                 self._display_processed_frame(img)
-    #     except Exception as e:
-    #         print("[ERROR] Streaming failed:", e)
 
     def _send_async_http(self, frame):
         try:

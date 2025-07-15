@@ -27,14 +27,6 @@ class BottomBar(QWidget):
         layout.setContentsMargins(10, 10, 10, 10)
         layout.setSpacing(20)
 
-        plc_status_card = self._create_plc_status_card()
-        plc_output_card = self._create_plc_output_card()
-
-        plc_status_card.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
-        plc_output_card.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
-
-        layout.addWidget(plc_status_card, 1)  # 20%
-        layout.addWidget(plc_output_card, 1)  # 80%
 
         bar_layout = QVBoxLayout(self)
         bar_layout.setContentsMargins(0, 0, 0, 0)
