@@ -33,7 +33,7 @@ class ControllerCamera:
             self.running = False
             self.camera._stop_camera()
             self.timer.stop()
-            self.UI.center_panel.clear()
+            self.UI.center_panel.left_camera.clear()
 
     def _update_frame(self):
         frame = self.camera._read_frame()
@@ -68,6 +68,6 @@ class ControllerCamera:
         rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         h, w, ch = rgb.shape
         img = QImage(rgb.data, w, h, ch * w, QImage.Format_RGB888)
-        self.UI.center_panel.setPixmap(QPixmap.fromImage(img).scaled(
-            self.UI.center_panel.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation
+        self.UI.center_panel.left_camera.setPixmap(QPixmap.fromImage(img).scaled(
+            self.UI.center_panel.left_camera.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation
         ))

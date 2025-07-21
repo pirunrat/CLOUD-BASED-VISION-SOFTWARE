@@ -1,9 +1,10 @@
 from PyQt5.QtWidgets import QWidget, QHBoxLayout, QVBoxLayout, QSizePolicy
 from ..Leftbar.leftbar import LeftSidebar
-from ..Camerapanel.camerapanel import CenterCameraPanel
+from ..Camerapanel.split_camera_panel import SplitCameraPanel  # ✅ New import
 from ..Rightbar.rightbar import RightSidebar
 from ..Rightbar.rightbar_2 import RightSidebar2
 import style
+
 
 class MiddlePanel(QWidget):
     def __init__(self, parent=None):
@@ -12,7 +13,7 @@ class MiddlePanel(QWidget):
 
         # -- UI Components
         self.left_sidebar = LeftSidebar()
-        self.center_panel = CenterCameraPanel()
+        self.center_panel = SplitCameraPanel()  # ✅ Changed to SplitCameraPanel
         self.center_panel.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
 
         # Rightbar container (acts like a stack manually)
@@ -21,22 +22,14 @@ class MiddlePanel(QWidget):
         self.rightbar_layout.setContentsMargins(0, 0, 0, 0)
         self.rightbar_layout.setSpacing(0)
 
-        # All possible rightbars
         self.rightbars = {
-            "Item1": RightSidebar(),
-            "Item2": RightSidebar2(),
-            "Item3": RightSidebar()
+            # Optional: Add named sidebars here later
         }
 
-        # Add all, but hide all except default
         for key, widget in self.rightbars.items():
             self.rightbar_layout.addWidget(widget)
             widget.hide()
 
-        self.current_rightbar = self.rightbars["Item1"]
-        self.current_rightbar.show()
-
-        # -- Layout
         layout = QVBoxLayout(self)
         layout.setContentsMargins(0, 0, 0, 0)
         layout.setSpacing(0)
@@ -47,7 +40,7 @@ class MiddlePanel(QWidget):
 
         self.main_content_layout.addWidget(self.left_sidebar)
         self.main_content_layout.addWidget(self.center_panel)
-        self.main_content_layout.addWidget(self.rightbar_container)
+        # self.main_content_layout.addWidget(self.rightbar_container)
 
         layout.addLayout(self.main_content_layout)
 
